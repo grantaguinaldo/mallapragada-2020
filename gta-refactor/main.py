@@ -5,6 +5,7 @@ import numpy as np
 import collections
 pd.options.mode.chained_assignment = None 
 import os
+from model_refactor import build_model
 
 cost_scenario_folder = os.path.join('CostScenarios', 
                                     '2020_AG')
