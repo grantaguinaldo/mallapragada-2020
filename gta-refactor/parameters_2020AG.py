@@ -77,7 +77,8 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'pv', 
     'param_name': 'pGridElecPrice', 
-    'value': 120.0, 'comments': 'Fixed, a priori'},
+    'value': 120.0, 
+    'comments': 'Fixed, a priori'},
 
     {'idx': 8011, 
     'year': 2020, 
@@ -108,14 +109,16 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'battery_storage', 
     'param_name': 'pStEffDischg',  
-    'value': 0.96, 'comments': 'Assumption, fixed a priori'},
+    'value': 0.96, 
+    'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8015, 
     'year': 2020, 
     'storage_type': 'above', 
     'category': 'battery_storage', 
     'param_name': 'pCapCostPowSt', 
-    'value': 589.0, 'comments': 'Assumption, fixed a priori (ref. 13)'},
+    'value': 589.0, 
+    'comments': 'Assumption, fixed a priori (ref. 13)'},
 
     {'idx': 8016, 
     'year': 2020, 
@@ -194,7 +197,8 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pCapCostH2Comp', 
-    'value': 1200.0, 'comments': 'Comes from `CapCostComp_dkW` (Parks et al, ref 61).'},
+    'value': 1200.0, 
+    'comments': 'Comes from `CapCostComp_dkW` (Parks et al, ref 61).'},
     
     {'idx': 8026, 
     'year': 2020, 
@@ -225,7 +229,8 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pFOMCostH2st', 
-    'value': 5.16, 'comments': 'Assumed to be 1% from CAPEX `pCapCostH2st` (Penev et al, ref 62).'},
+    'value': 5.16, 
+    'comments': 'Assumed to be 1% from CAPEX `pCapCostH2st` (Penev et al, ref 62).'},
     
     {'idx': 8030, 
     'year': 2020, 
