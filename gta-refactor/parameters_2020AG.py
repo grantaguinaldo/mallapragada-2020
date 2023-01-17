@@ -202,7 +202,7 @@ parameterDict2020AG = [
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pFOMCostH2Comp', 
     'value': 48000.0, 
-    'comments': 'Assumed to be 1% of CAPEX `pCapCostH2Comp` and converted to $/MW.'},
+    'comments': 'Assumed to be 4% of CAPEX `pCapCostH2Comp` and converted to $/MW.'},
     
     {'idx': 8027, 
     'year': 2020, 
