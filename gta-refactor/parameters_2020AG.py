@@ -46,7 +46,7 @@ parameterDict2020AG = [
     'above', 'category': 'hydrogen_production', 
     'param_name': 'pProductionSlackCost', 
     'value': 0,
-    'units': 'kg/hr', 
+    'units': '$/kg', 
     'description': 'Production slack.',
     'comments': 'Initially fixed at zero before model runs.'},
 
