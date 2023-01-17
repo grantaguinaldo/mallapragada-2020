@@ -12,7 +12,7 @@ def build_model(pvavailarray=None,
                 dfStorData=None,
                 dfElyData=None,
                 dfH2StData=None,
-                CCF=CCF_val,
+                CCF=None,
                 productionCommitmentLB=None,
                 minimumProductionShutdownLength=None, 
                 genLP=None, 
@@ -28,139 +28,186 @@ def build_model(pvavailarray=None,
     
     ##########################################
     # Model Parameters
+    # Values are for the 2020 AG Case.
     ##########################################
     
+    # 8001
+    # 0.07873476636464005
     m.pCCF = en.Param(within = en.NonNegativeReals, 
                       initialize = CCF, 
                       mutable = False)
-    
+    # 8002
+    # 4166.667
     m.pH2DesignFlowRate = en.Param(within = en.NonNegativeReals, 
                                    initialize = 4166.667, 
                                    mutable = False)
-    
+    # 8003
+    # 0.9
     m.pCFPlantLB = en.Param(within = en.NonNegativeReals,
                             initialize = 0.9,
                             mutable = False)
-    
+    # 8004
+    # 120.1
     m.pH2LHV = en.Param(within = en.NonNegativeReals, 
                         initialize = 120.1, 
                         mutable = False)
-    
+    # 8005
+    # 0
     m.pProductionSlackCost = en.Param(within = en.NonNegativeReals,
                                       initialize = 0, 
                                       mutable=True)
-    
+    # 8006
+    # 850
     m.pCapCostPV = en.Param(within = en.NonNegativeReals,
                             initialize = dfPVData.CapCost_dkW.values[0], 
                             mutable = False)
-    
+    # 8007
+    # 8500
     m.pFOMCostPV = en.Param(within = en.NonNegativeReals,
                             initialize = dfPVData.FOM_pct_CAPEX.values[0]*dfPVData.CapCost_dkW.values[0]*1000, 
                             mutable = False)
-    
+    # 8008
+    # 0
     m.pVOMCostPV = en.Param(within = en.NonNegativeReals,
                             initialize = dfPVData.VOM_dMWh.values[0],
                             mutable = False)
-    
+    # 8009
     m.pPVCapFactor = en.Param(m.t,
                               within = en.NonNegativeReals, 
                               initialize = {tval[j]:pvavailarray[j] for j in range(len(tval))}, 
                               mutable = True)
-    
+    # 8010
+    # 120 for all t
     m.pGridElecPrice = en.Param(m.t, 
                                 initialize={tval[j]:pricearray[j] for j in range(len(tval))}, 
                                 mutable=True)
     
-    m.pInvEff = en.Param(within = en.NonNegativeReals, 
-                         initialize = dfPVData.InvEff.values[0], 
-                         mutable = False)
-    
+    # 8011
+    # 60
     m.pCapCostInv = en.Param(within = en.NonNegativeReals, 
                              initialize = dfPVData.InvCapCost_dkW.values[0], 
                              mutable = False)
-    
+   
+    # 8012
+    # 0.96
+    m.pInvEff = en.Param(within = en.NonNegativeReals, 
+                         initialize = dfPVData.InvEff.values[0], 
+                         mutable = False)
+
+    # 8013
+    # 0.96
     m.pStEffChg = en.Param(m.bes, 
                            within = en.NonNegativeReals, 
                            initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                  'St_eff_chg'] for j in range(len(esval))}, 
                            mutable = False)
-    
+    # 8014
+    # 0.96
     m.pStEffDischg = en.Param(m.bes, 
                               within = en.NonNegativeReals, 
                               initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                     'St_eff_dischg'] for j in range(len(esval))}, 
                               mutable = False)
     
+    # 8015
+    # 589
     m.pCapCostPowSt = en.Param(m.bes, 
                                within = en.NonNegativeReals,
                                initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                      'Power_capex_dpkW'] for j in range(len(esval))}, 
                                mutable = False)
-    
+    # 8016
+    # 206
     m.pCapCostEnergySt = en.Param(m.bes, 
                                   within = en.NonNegativeReals,
                                   initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                         'Energy_capex_dpkWh'] for j in range(len(esval))}, 
                                   mutable = False)
-    
+    # 8017
+    # 7873
     m.pFOMCostSt = en.Param(m.bes, 
                             within = en.NonNegativeReals, 
                             initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                   'FOM_dMWyr'] for j in range(len(esval))}, 
                             mutable = False)
-    
+    # 8018
+    # 2.7
     m.pVOMCostSt = en.Param(m.bes, 
                             within = en.NonNegativeReals,
                             initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                   'VOM_dMWh'] for j in range(len(esval))}, 
                             mutable = False)
-    
+    # 8019
+    # 100
     m.pDur_UB = en.Param(m.bes,
                          within = en.NonNegativeReals,
                          initialize = {esval[j]:dfStorData.loc[esval[j], 
                                                                'MaxDur_hrs'] for j in range(len(esval))}, 
                          mutable = False)
     
+    # 8020
+    # 57.51915708812261
     m.pElySpecPower = en.Param(within = en.NonNegativeReals, 
                                initialize = dfElyData.ElySpecPower_kWhkg.values[0], 
                                mutable = False)
     
+    # 8021
+    # 800
     m.pCapCostEly = en.Param(within = en.NonNegativeReals, 
                              initialize = dfElyData.CapCost_dkW.values[0], 
                              mutable = False)
     
+    # 8022
+    # 0
+    m.pVOMCostEly = en.Param(within = en.NonNegativeReals,
+                             initialize = dfElyData.VOMCost_dMWh.values[0], 
+                             mutable = False)
+    
+    
+    # 8023
+    # 56000.00000000001
     m.pFOMCostEly = en.Param(within = en.NonNegativeReals,
                              initialize = dfElyData.FOM_pct_CAPEX.values[0]*dfElyData.CapCost_dkW.values[0]*1000, 
                              mutable = False)
     
-    m.pVOMCostEly = en.Param(within = en.NonNegativeReals,
-                             initialize = dfElyData.VOMCost_dMWh.values[0], 
-                             mutable = False)
-
+    # 8024
+    # 0.014867499999999999
     m.pFeedH2OCostEly = en.Param(within = en.NonNegativeReals,
                                  initialize = dfElyData.Water_cost_d_per_kg_H2.values[0], 
                                  mutable = False)
 
+    # 8025
+    # 1200
     m.pCapCostH2Comp = en.Param(within = en.NonNegativeReals, 
                                 initialize = dfH2StData.CapCostComp_dkW.values[0], 
                                 mutable = False)
 
+    # 8026
+    # 48000
     m.pFOMCostH2Comp = en.Param(within = en.NonNegativeReals,
                                 initialize = dfH2StData.CompFOM_pct_CAPEX.values[0]*dfH2StData.CapCostComp_dkW.values[0]*1000, 
                                 mutable = False)
 
+    # 8027
+    # 1
     m.pCompSpecPower = en.Param(within = en.NonNegativeReals, 
                                 initialize = dfH2StData.CompSpecPower_kWhpkg.values[0], 
                                 mutable = False)
 
+    # 8028
+    # 516
     m.pCapCostH2st = en.Param(within = en.NonNegativeReals,
                               initialize = dfH2StData.CapCostst_dkg.values[0], 
                               mutable = False)    
     
+    # 8029
+    # 5.16
     m.pFOMCostH2st = en.Param(within = en.NonNegativeReals,
                              initialize = dfH2StData.StFOM_pct_CAPEX.values[0]*dfH2StData.CapCostst_dkg.values[0], 
                               mutable = False)
     
+    # 8030
+    # 1000
     m.pH2kgpertank = en.Param(within = en.NonNegativeReals, 
                               initialize = dfH2StData.mass_stored_kg.values[0], 
                               mutable = False)
