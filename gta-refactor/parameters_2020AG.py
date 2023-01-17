@@ -6,6 +6,8 @@ parameterDict2020AG = [
     'category': 'general', 
     'param_name': 'pCCF', 
     'value': 0.07873476636464005, 
+    'units': 'unitless',
+    'description': 'Capital charge factor to annualize investment costs.',
     'comments': 'Calculated field using the discount rate (5.4 %) and lifetime value (20 years).'},
 
     {'idx': 8002, 
@@ -13,7 +15,9 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'hydrogen_production', 
     'param_name': 'pH2DesignFlowRate', 
-    'value': 4166.667, 
+    'value': 4166.667,
+    'units': 'kg/hr', 
+    'description': 'Designed plant flow rate of hydrogen.',
     'comments': 'Assumption, fixed a priori'},
     
     {'idx': 8003, 
@@ -21,7 +25,9 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'hydrogen_production', 
     'param_name': 'pCFPlantLB', 
-    'value': 0.9, 
+    'value': 0.9,
+    'units': 'unitless', 
+    'description': 'Lower bound on plant activity.',
     'comments': 'Lower bound on plant activity, fixed a priori.'},
 
     {'idx': 8004, 
@@ -30,6 +36,8 @@ parameterDict2020AG = [
     'category': 'hydrogen_production', 
     'param_name': 'pH2LHV', 
     'value': 120.1, 
+    'units': 'MJ/kg',
+    'description': 'Lower heating value of hydrogen.',
     'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8005, 
@@ -37,7 +45,9 @@ parameterDict2020AG = [
     'storage_type': 
     'above', 'category': 'hydrogen_production', 
     'param_name': 'pProductionSlackCost', 
-    'value': 0, 
+    'value': 0,
+    'units': 'kg/hr', 
+    'description': 'Production slack.',
     'comments': 'Initially fixed at zero before model runs.'},
 
     {'idx': 8006, 
@@ -45,7 +55,9 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'pv', 
     'param_name': 'pCapCostPV', 
-    'value': 850.0, 
+    'value': 850.0,
+    'units': '$/KW', 
+    'description': 'Unitized capital cost of PV system.',
     'comments': 'NREL Q1 2018 benchmark $/kWdc https://www.nrel.gov/docs/fy19osti/72399.pdf'},
 
     {'idx': 8007, 
@@ -54,6 +66,8 @@ parameterDict2020AG = [
     'category': 'pv', 
     'param_name': 'pFOMCostPV', 
     'value': 8500.0, 
+    'units': '$/MW', 
+    'description': 'Fixed operating cost of PV system.',
     'comments': 'Assumed to be 1% of CAPEX `pCapCostPV` and converted to $/MW.'},
 
     {'idx': 8008, 
@@ -61,7 +75,9 @@ parameterDict2020AG = [
     'storage_type': 'above', 
     'category': 'pv', 
     'param_name': 'pVOMCostPV', 
-    'value': 0.0, 
+    'value': 0.0,
+    'units': '$/MW-hr',  
+    'description': 'Variable operating cost of PV system.',
     'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8009, 
@@ -70,6 +86,8 @@ parameterDict2020AG = [
     'category': 'pv', 
     'param_name': 'pPVCapFactor', 
     'value': None, 
+    'units': 'tbd', 
+    'description': 'Hourly PV capacity factor for a given site.',
     'comments': 'From external data source (NREL, TMY), for each site in the model.'},
 
     {'idx': 8010, 
@@ -78,6 +96,8 @@ parameterDict2020AG = [
     'category': 'pv', 
     'param_name': 'pGridElecPrice', 
     'value': 120.0, 
+    'units': '$/MW-hr',
+    'description': 'Hourly wholesale price of electricity from the grid.',
     'comments': 'Fixed, a priori'},
 
     {'idx': 8011, 
@@ -86,6 +106,8 @@ parameterDict2020AG = [
     'category': 'inverter', 
     'param_name': 'pCapCostInv', 
     'value': 60.0, 
+    'units': '$/MW', 
+    'description': 'Inverter capital cost.',
     'comments': 'Assumption made by Mallagragada et al.'},
 
     {'idx': 8012, 
@@ -94,6 +116,8 @@ parameterDict2020AG = [
     'category': 'inverter', 
     'param_name': 'pInvEff', 
     'value': 0.96, 
+    'units': 'unitless', 
+    'description': 'Efficiency of inverter.',
     'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8013, 
@@ -102,6 +126,8 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pStEffChg', 
     'value': 0.96, 
+    'units': 'unitless', 
+    'description': 'Charge efficiency of the battery storage device.',
     'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8014, 
@@ -110,6 +136,8 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pStEffDischg',  
     'value': 0.96, 
+    'units': 'unitless', 
+    'description': 'Discharge efficiency of the battery storage device',
     'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8015, 
@@ -118,7 +146,9 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pCapCostPowSt', 
     'value': 589.0, 
-    'comments': 'Assumption, fixed a priori (ref. 13)'},
+    'units': '$/KW-hr', 
+    'description': 'Capital cost of the battery storage system.',
+    'comments': 'Assumption, fixed a priori (TODO: Get full reference from ref. 13 in the paper.)'},
 
     {'idx': 8016, 
     'year': 2020, 
@@ -126,7 +156,9 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pCapCostEnergySt', 
     'value': 206.0, 
-    'comments': 'Assumption, fixed a priori (ref. 13)'},
+    'units': '$/KW', 
+    'description': 'Capital costs of the battery storage system.',
+    'comments': 'Assumption, fixed a priori (TODO: Get full reference from ref. 13 in the paper.)'},
 
     {'idx': 8017, 
     'year': 2020, 
@@ -134,7 +166,9 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pFOMCostSt', 
     'value': 7873.0, 
-    'comments': 'NREL ATB 2018 2020 costs (need to get full reference).'},
+    'units': '$/MW-yr', 
+    'description': 'Fixed operating cost of the battery storage system.',
+    'comments': 'NREL ATB 2018 2020 costs (TODO: get full reference).'},
 
     {'idx': 8018, 
     'year': 2020, 
@@ -142,6 +176,8 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pVOMCostSt', 
     'value': 2.7, 
+    'units': '$/MW-hr', 
+    'description': 'Variable operating cost of the battery storage system.',
     'comments': 'Assumption, fixed a priori'},
 
     {'idx': 8019, 
@@ -150,6 +186,8 @@ parameterDict2020AG = [
     'category': 'battery_storage', 
     'param_name': 'pDur_UB', 
     'value': 100.0, 
+    'units': 'hr', 
+    'description': 'Storage duration of the battery storage system.',
     'comments': 'Assumption, fixed a priori'},
     
     {'idx': 8020, 
@@ -158,6 +196,8 @@ parameterDict2020AG = [
     'category': 'electrolyzer', 
     'param_name': 'pElySpecPower',  
     'value': 57.51915709, 
+    'units': 'KW-hr/kg', 
+    'description': 'Hydrogen production factor for the electrolyzer system.',
     'comments': 'Median value for electrolyzer efficiency from IEA Future of Hydrogen report, 2019 (=1/0.58*120.1/3.6)'},
     
     {'idx': 8021, 
@@ -166,6 +206,8 @@ parameterDict2020AG = [
     'category': 'electrolyzer', 
     'param_name': 'pCapCostEly', 
     'value': 800.0, 
+    'units': '$/KW', 
+    'description': 'Capital cost of the electrolyzer.',
     'comments': 'Value is from Table 2 in `https://www.nrel.gov/docs/fy16osti/65856.pdf`'},
     
     {'idx': 8022, 
@@ -174,6 +216,7 @@ parameterDict2020AG = [
     'category': 'electrolyzer', 
     'param_name': 'pVOMCostEly', 
     'value': 0.00, 
+    'description': 'Variable operating costs for the electrolyzer.',
     'comments': 'Assumption, fixed a priori'},
     
     {'idx': 8023, 
@@ -182,6 +225,8 @@ parameterDict2020AG = [
     'category': 'electrolyzer', 
     'param_name': 'pFOMCostEly', 
     'value': 56000.0, 
+    'units': '$/MW-yr', 
+    'description': 'Fixed operating costs for the electrolyzer,',
     'comments': 'Assumed to be 7% of CAPEX `pCapCostEly` and converted to $/MW.'},
     
     {'idx': 8024, 
@@ -190,7 +235,9 @@ parameterDict2020AG = [
     'category': 'electrolyzer', 
     'param_name': 'pFeedH2OCostEly', 
     'value': 0.014867499, 
-    'comments': 'Value is from Table 10 in `https://www.nrel.gov/docs/fy17osti/67384.pdf` (=0.002375*(2.36+3.9)'},
+    'units': '$/kg', 
+    'description': 'Unitized cost for feedwater to produce hydrogen.',
+    'comments': 'Value is from Table 10 in `https://www.nrel.gov/docs/fy17osti/67384.pdf` (=0.002375*(2.36+3.9). Units are in terms of kg H2 produced.'},
     
     {'idx': 8025, 
     'year': 2020, 
@@ -198,7 +245,9 @@ parameterDict2020AG = [
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pCapCostH2Comp', 
     'value': 1200.0, 
-    'comments': 'Comes from `CapCostComp_dkW` (Parks et al, ref 61).'},
+    'units': '$/KW', 
+    'description': 'Capital cost for the storage compressor.',
+    'comments': 'Comes from `CapCostComp_dkW` (TODO: Verify Parks et al. ref 61).'},
     
     {'idx': 8026, 
     'year': 2020, 
@@ -206,6 +255,8 @@ parameterDict2020AG = [
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pFOMCostH2Comp', 
     'value': 48000.0, 
+    'units': '$/MW', 
+    'description': 'Fixed operating cost for the storage compressor.',
     'comments': 'Assumed to be 4% of CAPEX `pCapCostH2Comp` and converted to $/MW.'},
     
     {'idx': 8027, 
@@ -214,7 +265,9 @@ parameterDict2020AG = [
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pCompSpecPower', 
     'value': 1.0, 
-    'comments': 'Assumption made by Mallagragada et al. based on a book (Need to get full reference).'},
+    'units': 'KW-hr/kg', 
+    'description': 'Compressor production factor.',
+    'comments': 'Assumption made by Mallagragada et al. based on a book (TODO: get full reference).'},
     
     {'idx': 8028, 
     'year': 2020, 
@@ -222,15 +275,18 @@ parameterDict2020AG = [
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pCapCostH2st', 
     'value': 516.0, 
-    'comments': 'Fixed a priori from Ahluwalia et al. (Need to get full reference).'},
+    'units': '$/kg', 
+    'description': 'Capitial costs for the storage compressor.',
+    'comments': 'Fixed a priori from Ahluwalia et al. (TODO: get full reference).'},
     
     {'idx': 8029, 
     'year': 2020, 
     'storage_type': 'above', 
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pFOMCostH2st', 
-    'value': 5.16, 
-    'comments': 'Assumed to be 1% from CAPEX `pCapCostH2st` (Penev et al, ref 62).'},
+    'units': '$/kg', 
+    'description': 'Fixed operating costs for the storage compressor.',
+    'value': 5.16, 'comments': 'Assumed to be 1% from CAPEX `pCapCostH2st` (Penev et al, ref 62).'},
     
     {'idx': 8030, 
     'year': 2020, 
@@ -238,5 +294,7 @@ parameterDict2020AG = [
     'category': 'hydrogen_storage_compressor', 
     'param_name': 'pH2kgpertank', 
     'value': 1000.0, 
-    'comments': 'Assumption, fixed a priori'}
+    'units': 'kg/unit', 
+    'description': 'Capacity of a single hydrogen storage tank.',
+    'comments': 'Assumption, fixed a priori. Units are assumed to be in terms of units of H2 storage devices.'}
 ]
